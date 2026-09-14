@@ -1,6 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { ScheduleConfig } from "./types";
+import { ScheduleConfig, PacificStatusResult } from "./types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -23,15 +23,7 @@ export function formatPhoneNumber(phone: string): string {
 export function checkPacificBusinessHours(
   config: ScheduleConfig,
   targetDate: Date = new Date()
-): {
-  isVaShift: boolean;
-  pacificDayName: string;
-  pacificHour: number;
-  pacificMinute: number;
-  timeString: string;
-  routingDestination: "VA_WEBRTC" | "OWNER_IPHONE";
-  reason: string;
-} {
+): PacificStatusResult {
   // If emergency override is active:
   if (config.emergencyOverride === "FORCE_VA") {
     return {

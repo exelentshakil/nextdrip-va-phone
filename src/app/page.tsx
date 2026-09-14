@@ -13,7 +13,8 @@ import {
   CallRecord, 
   SmsThread, 
   ScheduleConfig, 
-  UserRole 
+  UserRole,
+  PacificStatusResult
 } from "@/lib/types";
 import { checkPacificBusinessHours } from "@/lib/utils";
 import { Navbar } from "@/components/Navbar";
@@ -46,15 +47,7 @@ export default function Home() {
 
   const [mounted, setMounted] = useState(false);
   // Deterministic Pacific Clock state for hydration safety
-  const [pacificStatus, setPacificStatus] = useState<{
-    isVaShift: boolean;
-    pacificDayName: string;
-    pacificHour: number;
-    pacificMinute: number;
-    timeString: string;
-    routingDestination: "VA_WEBRTC" | "OWNER_IPHONE";
-    reason: string;
-  }>({
+  const [pacificStatus, setPacificStatus] = useState<PacificStatusResult>({
     isVaShift: true,
     pacificDayName: "Wednesday",
     pacificHour: 10,

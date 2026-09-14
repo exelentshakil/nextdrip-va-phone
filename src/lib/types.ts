@@ -113,3 +113,13 @@ export interface AiSmartReplyResult {
   model: string;
   latencyMs: number;
 }
+
+export interface PacificStatusResult {
+  isVaShift: boolean;
+  pacificDayName: string;
+  pacificHour: number;
+  pacificMinute: number;
+  timeString: string;
+  routingDestination: "VA_WEBRTC" | "OWNER_IPHONE";
+  reason: string;
+}

@@ -46,13 +46,21 @@ export default function Home() {
 
   const [mounted, setMounted] = useState(false);
   // Deterministic Pacific Clock state for hydration safety
-  const [pacificStatus, setPacificStatus] = useState({
+  const [pacificStatus, setPacificStatus] = useState<{
+    isVaShift: boolean;
+    pacificDayName: string;
+    pacificHour: number;
+    pacificMinute: number;
+    timeString: string;
+    routingDestination: "VA_WEBRTC" | "OWNER_IPHONE";
+    reason: string;
+  }>({
     isVaShift: true,
     pacificDayName: "Wednesday",
     pacificHour: 10,
     pacificMinute: 30,
     timeString: "10:30 AM Pacific",
-    routingDestination: "VA_WEBRTC" as const,
+    routingDestination: "VA_WEBRTC",
     reason: "Standard VA shift active"
   });
 

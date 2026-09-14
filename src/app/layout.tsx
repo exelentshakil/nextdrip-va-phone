@@ -21,7 +21,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className="min-h-screen antialiased bg-[var(--background)] text-[var(--text-primary)]">
+      <body suppressHydrationWarning className="min-h-screen antialiased bg-[var(--background)] text-[var(--text-primary)]">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
         </ThemeProvider>

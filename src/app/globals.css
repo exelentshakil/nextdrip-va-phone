@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #f8fafc;
+    --surface: #ffffff;
+    --surface-subtle: #f1f5f9;
+    --border: #e2e8f0;
+    --border-strong: #cbd5e1;
+    --text-primary: #090d16;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --brand: #e11d48;
+    --brand-hover: #be123c;
+    --brand-subtle: #ffe4e6;
+    --brand-text: #9f1239;
+    --live: #10b981;
+    --live-subtle: #d1fae5;
+    --live-text: #065f46;
+    --accent-indigo: #4f46e5;
+    --accent-indigo-subtle: #e0e7ff;
+    --accent-cyan: #0891b2;
+    --accent-cyan-subtle: #cffafe;
+    --accent-amber: #d97706;
+    --accent-amber-subtle: #fef3c7;
+  }
+
+  .dark {
+    --background: #08090a;
+    --surface: #0f1115;
+    --surface-subtle: #161a22;
+    --border: #1e222d;
+    --border-strong: #2a3142;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --brand: #f43f5e;
+    --brand-hover: #fb7185;
+    --brand-subtle: rgba(244, 63, 94, 0.12);
+    --brand-text: #fda4af;
+    --live: #10b981;
+    --live-subtle: rgba(16, 185, 129, 0.12);
+    --live-text: #6ee7b7;
+    --accent-indigo: #6366f1;
+    --accent-indigo-subtle: rgba(99, 102, 241, 0.12);
+    --accent-cyan: #06b6d4;
+    --accent-cyan-subtle: rgba(6, 182, 212, 0.12);
+    --accent-amber: #f59e0b;
+    --accent-amber-subtle: rgba(245, 158, 11, 0.12);
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code, kbd, pre, .font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Pulse animation for live data packets along SVG wires */
+@keyframes wirePulse {
+  0% {
+    stroke-dashoffset: 24;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-wire-pulse {
+  animation: wirePulse 1.2s linear infinite;
+}
+
+@keyframes liveWaveform {
+  0%, 100% { height: 6px; }
+  50% { height: 24px; }
+}
+
+.animate-wave-1 { animation: liveWaveform 0.8s ease-in-out infinite; }
+.animate-wave-2 { animation: liveWaveform 1.1s ease-in-out infinite 0.15s; }
+.animate-wave-3 { animation: liveWaveform 0.7s ease-in-out infinite 0.3s; }
+.animate-wave-4 { animation: liveWaveform 0.95s ease-in-out infinite 0.1s; }
+.animate-wave-5 { animation: liveWaveform 0.65s ease-in-out infinite 0.25s; }

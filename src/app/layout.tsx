@@ -22,7 +22,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body suppressHydrationWarning className="min-h-screen antialiased bg-[var(--background)] text-[var(--text-primary)]">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           {children}
         </ThemeProvider>
         {/* Central Demo Traffic Analytics Pixel */}

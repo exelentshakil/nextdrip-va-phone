@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { UserRole } from "@/lib/types";
 import { 
   PhoneCall, 
@@ -39,6 +39,8 @@ export function Navbar({
   isVaShiftActive,
 }: NavbarProps) {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   return (
     <header className="border-b border-[var(--border)] bg-[var(--surface)] sticky top-0 z-40">
@@ -190,7 +192,7 @@ export function Navbar({
               className="p-2 rounded-lg border border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-subtle)] transition-colors"
               aria-label="Toggle theme"
             >
-              {theme === "dark" ? (
+              {mounted && theme === "dark" ? (
                 <Sun className="h-4 w-4" />
               ) : (
                 <Moon className="h-4 w-4" />

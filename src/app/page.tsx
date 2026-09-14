@@ -44,8 +44,17 @@ export default function Home() {
     territory: string;
   } | null>(null);
 
-  // Pacific Clock & Business Hours state
-  const [pacificStatus, setPacificStatus] = useState(() => checkPacificBusinessHours(DEFAULT_SCHEDULE_CONFIG));
+  const [mounted, setMounted] = useState(false);
+  // Deterministic Pacific Clock state for hydration safety
+  const [pacificStatus, setPacificStatus] = useState({
+    isVaShift: true,
+    pacificDayName: "Wednesday",
+    pacificHour: 10,
+    pacificMinute: 30,
+    timeString: "10:30 AM Pacific",
+    routingDestination: "VA_WEBRTC" as const,
+    reason: "Standard VA shift active"
+  });
 
   // Live Execution Logs
   const [logs, setLogs] = useState<LogEntry[]>([
@@ -77,8 +86,10 @@ export default function Home() {
     }
   ]);
 
-  // Clock tick every 10 seconds
+  // Clock tick every 10 seconds with mounted guard
   useEffect(() => {
+    setMounted(true);
+    setPacificStatus(checkPacificBusinessHours(scheduleConfig));
     const timer = setInterval(() => {
       setPacificStatus(checkPacificBusinessHours(scheduleConfig));
     }, 10000);
